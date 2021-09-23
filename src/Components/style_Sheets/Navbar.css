@@ -1,0 +1,27 @@
+nav{
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-around;
+}
+nav .company-logo{
+    background-image: url(../images/bb_logo.png);
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 75px;
+}
+nav .search{
+    display: flex;
+    margin-top: 33px;
+}
+nav .search input{
+    padding-left: 10px;
+    padding-right: 220px;
+    height: 30px;
+    border: 1px solid #888;
+}
+nav .search button{
+    background-color: #84c225;
+    border: 1px solid #84c225;
+    height: 34px;
+    width: 35px;
+}
