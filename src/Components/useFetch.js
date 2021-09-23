@@ -27,6 +27,6 @@ const useFetch = (uri) => {
     }, [uri])
 
     return {data, isPending, error};
-}
+};
 
 export default useFetch;
