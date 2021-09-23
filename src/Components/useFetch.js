@@ -1,6 +1,7 @@
 import { useState, useEffect} from "react";
+const uri = '../data/products.json'
 
-const useFetch = (uri) => {
+const useFetch = () => {
     const [data, setData] = useState(null);
     const [isPending, setisPending] = useState(true);
     const [error, setError] = useState(null);
@@ -24,9 +25,9 @@ const useFetch = (uri) => {
                 setError(error.message)
                 setisPending(false)
             });
-    }, [uri])
+    }, [    ])
 
-    return {data, isPending, error};
+    return {data, isPending, error, setData};
 };
 
 export default useFetch;

@@ -1,6 +1,6 @@
 import {Link } from 'react-router-dom'
-import './style_Sheets/Navbar.css'
 import { ReactComponent as Search } from './images/search.svg';
+import './style_Sheets/Navbar.css'
 
 const Navbar = () => {
     return(
@@ -12,6 +12,7 @@ const Navbar = () => {
                 <button type="submit"><Search /></button>
                 </div>
             </form>
+            {productList && <p>{productList.reduce((count, current) => (current.numberOfItems ? count++ : count), 0)}</p>}
         </nav>
     );
 
