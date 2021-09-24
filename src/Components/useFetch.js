@@ -25,7 +25,7 @@ const useFetch = () => {
                 setError(error.message)
                 setisPending(false)
             });
-    }, [    ])
+    },[])
 
     return {data, isPending, error, setData};
 };

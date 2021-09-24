@@ -1,0 +1,14 @@
+.home{
+    max-width: 1000px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 300px;
+    gap: 12px;
+}
+.home .product{
+    border: 2px solid transparent;
+}
+.home .product:hover{
+    border: 2px solid rgb(207, 207, 207);
+}

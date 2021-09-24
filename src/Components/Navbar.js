@@ -12,7 +12,6 @@ const Navbar = () => {
                 <button type="submit"><Search /></button>
                 </div>
             </form>
-            {productList && <p>{productList.reduce((count, current) => (current.numberOfItems ? count++ : count), 0)}</p>}
         </nav>
     );
 
