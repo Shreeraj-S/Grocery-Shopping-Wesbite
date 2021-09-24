@@ -19,11 +19,18 @@ nav .search input{
     padding-right: 220px;
     height: 30px;
     border: 1px solid #888;
+    color: #222;
+    font-size: 14px;
+}
+nav .search input:focus{
+    outline: none;
+    border: 1px solid #84c225;
+    
 }
 nav .search button{
     background-color: #84c225;
     border: 1px solid #84c225;
-    height: 34px;
+    height: 32px;
     width: 35px;
 }
 nav .cart_navbar{

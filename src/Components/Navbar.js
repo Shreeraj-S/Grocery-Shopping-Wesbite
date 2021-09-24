@@ -3,9 +3,10 @@ import { ReactComponent as Search } from './images/search.svg';
 import { ReactComponent as CartImage } from './images/cart_image.svg';
 import './style_Sheets/Navbar.css'
 import Cart from './Cart';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const Navbar = ({productList, editProductList}) => {
+    const [searchItem, setSearchItem] = useState('Search for Products..');
     const cartRef = useRef();
     
     const handleClick = () => {
@@ -14,14 +15,31 @@ const Navbar = ({productList, editProductList}) => {
 
     const handleMouseLeave = () => {
         cartRef.current.classList.remove('active');
-    }
+    };
+
+    const handleSearchInput = event => {
+        setSearchItem(event.target.value);
+        const searchText = event.target.value.trim().toLowerCase();
+        console.log(searchText);
+        editProductList(previousProductList => {
+            const newProductList = previousProductList
+                .filter(product => product.category.toLowerCase().includes(searchText))
+            return newProductList;
+        })
+        
+    };
+
+    const handleSearch = event => {
+        event.preventDefault();
+    };
 
     return(
         <>
             <nav>
                 <Link className="company-logo" to='/'></Link>
-                <form className="search">
-                    <input type="text" placeholder="Search for Products.."/>
+                <form className="search" onSubmit={handleSearch}>
+                    <input type="text" value={searchItem} onClick={() => setSearchItem('')}
+                        onChange={handleSearchInput}/>
                     <div>
                     <button type="submit"><Search /></button>
                     </div>

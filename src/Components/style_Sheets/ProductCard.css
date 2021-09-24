@@ -3,12 +3,17 @@
     height: 60%;
 }
 .product .name{
+    background-color: #ececec;
     color: rgb(49, 49, 49);
     font-size: 15px;
     padding: 2px;
 }
 .product .name:hover{
     color: #096;
+}
+.product .availablility{
+    float: right;
+    padding: 5px;
 }
 .product .bottom{
     padding: 2px;

@@ -10,18 +10,25 @@ const Cart = ({productList, editProductList}) => {
             newProductList[index] = {...newProductList[index], numberOfItems: numberOfItems}
             return newProductList;
         })
-    }
+    };
+
+    const subTotal = productList.reduce((total, current) => {
+        total += current.price * current.numberOfItems;
+        return total;
+    },0)
 
     return(
         <div className="cart">
             {productList && productList.map(product => 
                 <CartProduct key={product.id} product={product} updateProducts={updateProducts}/>)}
-            <div className="billing">
-                <p className="sub_total">Sub Total: Rs. 118</p>
-                <p className="delivery_total">Delivry Charge: Rs. 118</p>
-                <p className="grand_total">Grand Total: Rs. 118</p>
-                <button className="checkout">Checkout</button>
-            </div>
+            {productList && 
+                (<div className="billing">
+                    <p className="sub_total">Sub Total: {subTotal}</p>
+                    <p className="delivery_total">Delivry Charge: Rs. 50</p>
+                    <p className="grand_total">Grand Total: Rs. {subTotal + 50}</p>
+                    <button className="checkout">Checkout</button>
+                </div>)
+            }
         </div>
     );
 }

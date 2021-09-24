@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 import './style_Sheets/ProductCard.css'
+import { ReactComponent as Available } from './images/available.svg';
+import { ReactComponent as NotAvailable } from './images/not_available.svg';
 
 const ProductCard = ({product, updateProducts}) => {
     const addtoCartClicked = useRef();
@@ -20,6 +22,9 @@ const ProductCard = ({product, updateProducts}) => {
     return(
             <div className="product">
                 <img className="product_image" src={`/data/product_images/${product.image}`} alt="product " />
+                <span className="availablility">{product.available ? 
+                    <span className='available'><Available /></span> : 
+                    <span className='not_available'><NotAvailable /></span> }</span>
                 <p className="name">{product.name}</p>
                 <div className="bottom">
                     <p className="price">MRP: <strike>Rs 200</strike> <span>Rs {product.price}</span></p>
