@@ -1,17 +1,16 @@
+import { useRef, useState } from 'react';
 import './style_Sheets/ProductCard.css'
 
-const ProductCard = ({productList, editProductList}) => {
-    const handleSubmit = (event, index) => {
-        event.preventDefault()
-        editProductList(previousProductList => {
-            const newProductList = [...previousProductList];
-            newProductList[index] = {...newProductList[index], numberOfItems: event.target.cartItems.value}
-            return newProductList;
-        })
+const ProductCard = ({product, index, handleSubmit}) => {
+    const addtoCartClicked = useRef();
+    const [numberOfItems, setNumberOfItems] = useState(1)
+
+    const handleClick = (num) => {
+        setNumberOfItems(previous => previous + num)
     };
+
     return(
-        productList.map((product, index) => (
-            <div className="product" key={product.id}>
+            <div className="product">
                 <img className="product_image" src={`/data/product_images/${product.image}`} alt="product " />
                 <p className="name">{product.name}</p>
                 <div className="bottom">
@@ -20,14 +19,20 @@ const ProductCard = ({productList, editProductList}) => {
                         <span className="bike_image"></span> 
                         <span className="text">Express Delivery: Today 3:30PM - 5:30PM</span>
                         </p>
-                    <form className="add-to-cart" onSubmit={event => handleSubmit(event, index)}>
+                    <form className="add-to-cart-normal" onSubmit={event => handleSubmit(event, index, addtoCartClicked)}>
                         <span className="qty">Qty</span>
-                        <input type="text"/>
+                        <input type="text" name="cartItems" value={numberOfItems} 
+                            onChange={e => setNumberOfItems(e.target.value)} required/>
                         <button type="submit">ADD <span className="cart_icon"></span></button>
+                    </form>
+                    <form className="add-to-cart-clicked" ref={addtoCartClicked} onSubmit={event => handleSubmit(event, index, addtoCartClicked)}>
+                        <button className='minus' onClick={() => handleClick(-1)}>-</button>
+                        <input type="text" name="cartItems" value={`${numberOfItems} in basket`} 
+                            onChange={e => setNumberOfItems(e.target.value)} required/>
+                        <button className='plus' onClick={() => handleClick(1)}>+</button>
                     </form>
                 </div>
             </div>
-        ))
     );
 };
 

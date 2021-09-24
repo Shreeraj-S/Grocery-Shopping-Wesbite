@@ -3,16 +3,18 @@ import React from 'react';
 import './App.css';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
+import useFetch from './Components/useFetch';
 
 
 function App() {
+  const {data: productList, isPending, error, setData} = useFetch();
   return (
     <div className="App">
       <Router>
-          <Navbar />
+          <Navbar productList={productList}/>
           <Switch>
               <Route exact path="/">
-                <Home />
+                <Home productList={productList} isPending={isPending} error={error} editProductList={setData}/>
               </Route>
           </Switch>
       </Router>
