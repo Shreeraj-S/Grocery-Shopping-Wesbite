@@ -3,12 +3,10 @@ import { ReactComponent as Search } from './images/search.svg';
 import { ReactComponent as CartImage } from './images/cart_image.svg';
 import './style_Sheets/Navbar.css'
 import Cart from './Cart';
-import { useRef, useState } from 'react';
+import { useRef} from 'react';
 
-const Navbar = ({productList, editProductList}) => {
-    const [searchItem, setSearchItem] = useState('Search for Products..');
+const Navbar = ({productList, editProductList, searchTerm, setSearchTerm}) => {
     const cartRef = useRef();
-    
     const handleClick = () => {
         cartRef.current.classList.toggle('active');
     };
@@ -17,19 +15,7 @@ const Navbar = ({productList, editProductList}) => {
         cartRef.current.classList.remove('active');
     };
 
-    const handleSearchInput = event => {
-        setSearchItem(event.target.value);
-        const searchText = event.target.value.trim().toLowerCase();
-        console.log(searchText);
-        editProductList(previousProductList => {
-            const newProductList = previousProductList
-                .filter(product => product.category.toLowerCase().includes(searchText))
-            return newProductList;
-        })
-        
-    };
-
-    const handleSearch = event => {
+    const handleSearchSubmit = event => {
         event.preventDefault();
     };
 
@@ -37,9 +23,9 @@ const Navbar = ({productList, editProductList}) => {
         <>
             <nav>
                 <Link className="company-logo" to='/'></Link>
-                <form className="search" onSubmit={handleSearch}>
-                    <input type="text" value={searchItem} onClick={() => setSearchItem('')}
-                        onChange={handleSearchInput}/>
+                <form className="search" onSubmit={handleSearchSubmit}>
+                    <input type="text" value={searchTerm} onClick={() => setSearchTerm('')}
+                        onChange={event => setSearchTerm(event.target.value)} placeholder='Search for products..'/>
                     <div>
                     <button type="submit"><Search /></button>
                     </div>
