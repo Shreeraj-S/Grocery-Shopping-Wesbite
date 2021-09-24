@@ -40,7 +40,9 @@ const Navbar = ({productList, editProductList}) => {
                 </div>
             </nav>
             <div className="cart_items" ref={cartRef}>
-                <Cart productList={productList} editProductList={editProductList}/>
+                {productList && 
+                    <Cart productList={productList.filter(product => product.numberOfItems)} 
+                        editProductList={editProductList}/>}
             </div>
         </>
     );

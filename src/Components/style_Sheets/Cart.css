@@ -3,6 +3,5 @@
     padding: 5px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-auto-rows: 15%;
     gap: 2%;
 }

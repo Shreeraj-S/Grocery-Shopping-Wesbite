@@ -2,22 +2,20 @@ import './style_Sheets/Cart.css'
 import CartProduct from './CartProduct';
 
 const Cart = ({productList, editProductList}) => {
-    
-    const handleSubmit = (event, index, addtoCartClicked) => {
-        event.preventDefault()
-        event.target.classList.add('inactive');
-        addtoCartClicked.current.classList.add('active')
+
+    const updateProducts = (numberOfItems, id) => {
         editProductList(previousProductList => {
             const newProductList = [...previousProductList];
-            newProductList[index] = {...newProductList[index], numberOfItems: event.target.cartItems.value}
+            const index = newProductList.findIndex(product => (product.id === id))
+            newProductList[index] = {...newProductList[index], numberOfItems: numberOfItems}
             return newProductList;
         })
-    };
+    }
 
     return(
         <div className="cart">
-            {productList && productList.map((product, index) => 
-                <CartProduct key={product.id} product={product} index={index} handleSubmit={handleSubmit}/>)}
+            {productList && productList.map(product => 
+                <CartProduct key={product.id} product={product} updateProducts={updateProducts}/>)}
         </div>
     );
 }
