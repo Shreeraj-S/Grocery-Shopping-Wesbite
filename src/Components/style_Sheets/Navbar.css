@@ -2,6 +2,7 @@ nav{
     margin: 15px 0;
     display: flex;
     justify-content: space-around;
+    position: relative;
 }
 nav .company-logo{
     background-image: url(../images/bb_logo.png);
@@ -45,6 +46,11 @@ nav .cart_navbar .text{
 }
 .cart_items{
     display: none;
+    position: absolute;
+    background-color: #e0e0e0;
+    border: 1px solid #b9b9b9;
+    top: 14.5%;
+    right: 3.8%;
 }
 .cart_items.active{
     display: block;

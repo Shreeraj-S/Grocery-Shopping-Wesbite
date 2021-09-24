@@ -13,7 +13,7 @@ const Navbar = ({productList, editProductList}) => {
     };
 
     const handleMouseLeave = () => {
-        cartRef.current.classList.remove('active');
+        // cartRef.current.classList.remove('active');
     }
 
     return(
