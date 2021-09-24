@@ -25,3 +25,27 @@ nav .search button{
     height: 34px;
     width: 35px;
 }
+nav .cart_navbar{
+    background-color: #f2f2f2;
+    border-color: #f2f2f2;
+    padding: 12px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+nav .cart_navbar .cart_image{
+    padding: 5px;
+}
+nav .cart_navbar .text{
+    padding: 5px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #535353;
+    letter-spacing: 0.1px;
+}
+.cart_items{
+    display: none;
+}
+.cart_items.active{
+    display: block;
+}

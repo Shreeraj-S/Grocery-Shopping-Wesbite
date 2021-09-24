@@ -5,13 +5,12 @@ import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import useFetch from './Components/useFetch';
 
-
 function App() {
   const {data: productList, isPending, error, setData} = useFetch();
   return (
     <div className="App">
       <Router>
-          <Navbar productList={productList}/>
+          <Navbar productList={productList} editProductList={setData}/>
           <Switch>
               <Route exact path="/">
                 <Home productList={productList} isPending={isPending} error={error} editProductList={setData}/>
