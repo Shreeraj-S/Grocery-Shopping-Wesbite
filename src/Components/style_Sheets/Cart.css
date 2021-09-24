@@ -1,6 +1,6 @@
 .cart{
     max-width: 500px;
-    padding: 5px;
+    padding: 5% 5px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 2%;

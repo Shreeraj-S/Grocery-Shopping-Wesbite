@@ -3,6 +3,9 @@
     background-color: white;
     justify-content: space-around;
 }
+.cart_product:hover{
+    background-color: rgb(245, 245, 245);
+}
 .cart_product .product_image{
     width: 20%;
     height: 100%;
