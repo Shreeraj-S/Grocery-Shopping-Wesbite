@@ -5,3 +5,46 @@
     grid-template-columns: 1fr;
     gap: 2%;
 }
+.cart .billing{
+    padding: 20px;
+    background-color: white;
+    text-align: end;
+    padding-right: 5%;
+    position: relative;
+}
+.cart .billing .sub_total{
+    font-size: 15px;
+    color: #666;
+}
+.cart .billing .delivery_total{
+    font-size: 15px;
+    color: #666;
+}
+.cart .billing .grand_total{
+    font-size: 18px;
+    color: #3b3b3b;
+}
+.cart .billing .checkout{
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    width: 40%;
+    padding: 8px;
+    background-color: #84c225;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    transition-duration: .3s;
+    transition-property: color, background-color;
+}
+.cart .billing .checkout:hover{
+    outline: none;
+    color: #eeeeee;
+    background-color: #87c032ea;
+}
+.cart .billing .checkout:active{
+    outline: none;
+    color: #eeeeee;
+    background-color: #b9d889ea;
+}

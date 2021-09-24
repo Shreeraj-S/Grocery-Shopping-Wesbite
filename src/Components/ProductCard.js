@@ -1,12 +1,20 @@
 import { useRef, useState } from 'react';
 import './style_Sheets/ProductCard.css'
 
-const ProductCard = ({product, handleSubmit}) => {
+const ProductCard = ({product, updateProducts}) => {
     const addtoCartClicked = useRef();
     const [numberOfItems, setNumberOfItems] = useState(1)
 
     const handleClick = (num) => {
         setNumberOfItems(previous => previous + num)
+    };
+
+    const handleSubmit = (event, id) => {
+        event.preventDefault()
+        event.target.classList.add('inactive');
+        addtoCartClicked.current.classList.add('active')
+        const numberOfItems = parseFloat(event.target.cartItems.value.substr(0, 2).trim());
+        updateProducts(numberOfItems, id);
     };
 
     return(
@@ -19,13 +27,13 @@ const ProductCard = ({product, handleSubmit}) => {
                         <span className="bike_image"></span> 
                         <span className="text">Express Delivery: Today 3:30PM - 5:30PM</span>
                         </p>
-                    <form className="add-to-cart-normal" onSubmit={event => handleSubmit(event, product.id, addtoCartClicked)}>
+                    <form className="add-to-cart-normal" onSubmit={event => handleSubmit(event, product.id)}>
                         <span className="qty">Qty</span>
                         <input type="text" name="cartItems" value={numberOfItems} 
                             onChange={e => setNumberOfItems(e.target.value)} required/>
                         <button type="submit">ADD <span className="cart_icon"></span></button>
                     </form>
-                    <form className="add-to-cart-clicked" ref={addtoCartClicked} onSubmit={event => handleSubmit(event, product.id, addtoCartClicked)}>
+                    <form className="add-to-cart-clicked" ref={addtoCartClicked} onSubmit={event => handleSubmit(event, product.id)}>
                         <button className='minus' onClick={() => handleClick(-1)}>-</button>
                         <input type="text" name="cartItems" value={`${numberOfItems} in basket`} 
                             onChange={e => setNumberOfItems(e.target.value)} required />

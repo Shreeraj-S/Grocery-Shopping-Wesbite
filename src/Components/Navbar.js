@@ -13,7 +13,7 @@ const Navbar = ({productList, editProductList}) => {
     };
 
     const handleMouseLeave = () => {
-        // cartRef.current.classList.remove('active');
+        cartRef.current.classList.remove('active');
     }
 
     return(
@@ -26,7 +26,7 @@ const Navbar = ({productList, editProductList}) => {
                     <button type="submit"><Search /></button>
                     </div>
                 </form>
-                <div className="cart_navbar" onMouseLeave={handleMouseLeave} onClick={handleClick}>
+                <div className="cart_navbar" onClick={handleClick}>
                     <CartImage className="cart_image" />
                     <div className='text'>
                         <span>My Basket <br /></span>
@@ -39,7 +39,7 @@ const Navbar = ({productList, editProductList}) => {
                     </div>
                 </div>
             </nav>
-            <div className="cart_items" ref={cartRef}>
+            <div className="cart_items" ref={cartRef} onMouseLeave={handleMouseLeave}>
                 {productList && 
                     <Cart productList={productList.filter(product => product.numberOfItems)} 
                         editProductList={editProductList}/>}
