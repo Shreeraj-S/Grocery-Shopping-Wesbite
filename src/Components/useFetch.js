@@ -1,5 +1,5 @@
 import { useEffect, useReducer} from "react";
-const uri = '../data/products.json'
+const uri = '../data/roducts.json'
 
 const initialState = {isPending: true, data: null, error: null};
 
@@ -8,8 +8,7 @@ const reducer = (state, action) => {
         case 'Data_Fetch_Successful':
             return {isPending: false, data: action.payload, error: null};
         case 'Data_Fetch_Failed':
-            return {isPending: false, data: null, 
-                error: `Sorry we are unable to get data at the moment please try again later 😓 Error: ${action.error}`};
+            return {isPending: false, data: null, error: action.error};
         case 'Update_Number_Of_Items':
             const newData = [...state.data];
             const index = newData.findIndex(element => (element.id === action.id))
