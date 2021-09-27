@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import useFetch from './Components/useFetch';
+import NotFound from './Components/NotFound';
 
 export const UpdateNumberofItemsContext = createContext();
 
@@ -18,11 +19,16 @@ function App() {
     <div className="App">
       <Router>
         <UpdateNumberofItemsContext.Provider value={updateNumberofItems}>
-          <Navbar productList={productList} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+          <Navbar productList={data} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
           <Switch>
-              <Route exact path="/">
-                  <Home productList={productList} isPending={isPending} error={error}/>
-              </Route>
+            <Route exact path="/">
+              <Home productList={productList} isPending={isPending} error={error}/>
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="*">
+              <NotFound />
+            </Route>
           </Switch>
         </UpdateNumberofItemsContext.Provider>
       </Router>
