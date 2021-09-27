@@ -33,11 +33,15 @@
     width: 25%;
 }
 .cart_product .add-to-cart-clicked input{
-    width: 8%;
-    text-align: center;
+    width: 12%;
     border: none;
+    text-align: center;
+    background-color: transparent;
     padding: 2%;
     margin-top: 20%;
+}
+.cart_product .add-to-cart-clicked input:focus{
+    outline: none;
 }
 .cart_product .add-to-cart-clicked button{
     border: 1px solid gray;

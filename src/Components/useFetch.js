@@ -1,5 +1,5 @@
 import { useEffect, useReducer} from "react";
-const uri = '../data/roducts.json'
+const uri = '../data/Products.json'
 
 const initialState = {isPending: true, data: null, error: null};
 
@@ -35,7 +35,7 @@ const useFetch = () => {
     },[])
 
     const updateNumberofItems = (id, numberOfItems) => {
-        if(!(numberOfItems < 1))
+        if(numberOfItems < 0) return;
          dispatch({type: 'Update_Number_Of_Items', id: id, numberOfItems: numberOfItems})
     };
 

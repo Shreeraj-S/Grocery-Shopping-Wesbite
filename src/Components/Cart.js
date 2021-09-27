@@ -2,7 +2,6 @@ import './style_Sheets/Cart.css'
 import CartProduct from './CartProduct';
 
 const Cart = ({productList}) => {
-
     const subTotal = productList.reduce((total, current) => {
         total += current.price * current.numberOfItems;
         return total;
