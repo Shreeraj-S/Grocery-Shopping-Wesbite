@@ -8,7 +8,7 @@ const ProductCard = ({product, updateProducts}) => {
     const [numberOfItems, setNumberOfItems] = useState(1)
 
     const handleClick = (num) => {
-        setNumberOfItems(previous => previous + num)
+        setNumberOfItems(previous => parseFloat(previous) + num)
     };
 
     const handleSubmit = (event, id) => {

@@ -9,7 +9,7 @@ const CartProduct = ({product, updateProducts}) => {
     }, [product.numberOfItems])
 
     const handleClick = (num) => {
-        setNumberOfItems(previous => previous + num)
+        setNumberOfItems(previous => parseFloat(previous) + num)
     };
 
     const handleSubmit = (event, id) => {
