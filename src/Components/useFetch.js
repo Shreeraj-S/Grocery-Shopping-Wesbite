@@ -1,33 +1,47 @@
-import { useState, useEffect} from "react";
+import { useEffect, useReducer} from "react";
 const uri = '../data/products.json'
 
+const initialState = {isPending: true, data: null, error: null};
+
+const reducer = (state, action) => {
+    switch(action.type){
+        case 'Data_Fetch_Successful':
+            return {isPending: false, data: action.payload, error: null};
+        case 'Data_Fetch_Failed':
+            return {isPending: false, data: null, 
+                error: `Sorry we are unable to get data at the moment please try again later 😓 Error: ${action.error}`};
+        case 'Update_Number_Of_Items':
+            const newData = [...state.data];
+            const index = newData.findIndex(element => (element.id === action.id))
+            newData[index] = {...newData[index], numberOfItems: action.numberOfItems}
+            return {isPending: false, data: newData, error: null};
+        default:
+            return initialState;
+    }
+};
+
 const useFetch = () => {
-    const [data, setData] = useState(null);
-    const [isPending, setisPending] = useState(true);
-    const [error, setError] = useState(null);
+    const [state, dispatch] = useReducer(reducer, initialState)
 
     useEffect(() => {
         const getData = async () =>{
             const response = await fetch(uri);
-            if(response.ok){
-                return response.json();
-            }else{
-                throw new Error('Sorry we are unable to get data at the moment please try again later 😓');
-            }
+            const data = await response.json();
+            return data;
         };
         
         getData()
-            .then(data => {
-                setData(data);
-                setisPending(false);
-            })
-            .catch(error => {
-                setError(error.message)
-                setisPending(false)
-            });
+            .then(data => dispatch({type: 'Data_Fetch_Successful', payload: data}))
+            .catch(error => dispatch({type: 'Data_Fetch_Failed', error: error.message}));
     },[])
 
-    return {data, isPending, error, setData};
+    const updateNumberofItems = (id, numberOfItems) => {
+        if(!(numberOfItems < 1))
+         dispatch({type: 'Update_Number_Of_Items', id: id, numberOfItems: numberOfItems})
+    };
+
+    const {data, isPending, error} = state;
+    return {data, isPending, error, updateNumberofItems};
 };
 
 export default useFetch;

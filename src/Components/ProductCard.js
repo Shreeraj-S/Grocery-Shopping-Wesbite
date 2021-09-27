@@ -1,11 +1,19 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext, useEffect} from 'react';
+import { UpdateNumberofItemsContext } from '../App';
 import './style_Sheets/ProductCard.css'
 import { ReactComponent as Available } from './images/available.svg';
 import { ReactComponent as NotAvailable } from './images/not_available.svg';
 
-const ProductCard = ({product, updateProducts}) => {
+const ProductCard = ({product}) => {
     const addtoCartClicked = useRef();
-    const [numberOfItems, setNumberOfItems] = useState(1)
+    const [numberOfItems, setNumberOfItems] = useState(1);
+
+    const updateNumberofItems = useContext(UpdateNumberofItemsContext);
+
+    useEffect(() => {
+        if(product.numberOfItems)
+        setNumberOfItems(product.numberOfItems);
+    }, [product.numberOfItems])
 
     const handleClick = (num) => {
         setNumberOfItems(previous => parseFloat(previous) + num)
@@ -16,7 +24,7 @@ const ProductCard = ({product, updateProducts}) => {
         event.target.classList.add('inactive');
         addtoCartClicked.current.classList.add('active')
         const numberOfItems = parseFloat(event.target.cartItems.value.substr(0, 2).trim());
-        updateProducts(numberOfItems, id);
+        updateNumberofItems(id, numberOfItems);
     };
 
     return(

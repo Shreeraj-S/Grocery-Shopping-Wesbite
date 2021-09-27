@@ -1,16 +1,7 @@
 import './style_Sheets/Cart.css'
 import CartProduct from './CartProduct';
 
-const Cart = ({productList, editProductList}) => {
-
-    const updateProducts = (numberOfItems, id) => {
-        editProductList(previousProductList => {
-            const newProductList = [...previousProductList];
-            const index = newProductList.findIndex(product => (product.id === id))
-            newProductList[index] = {...newProductList[index], numberOfItems: numberOfItems}
-            return newProductList;
-        })
-    };
+const Cart = ({productList}) => {
 
     const subTotal = productList.reduce((total, current) => {
         total += current.price * current.numberOfItems;
@@ -20,7 +11,7 @@ const Cart = ({productList, editProductList}) => {
     return(
         <div className="cart">
             {productList && productList.map(product => 
-                <CartProduct key={product.id} product={product} updateProducts={updateProducts}/>)}
+                <CartProduct key={product.id} product={product} />)}
             {productList && 
                 (<div className="billing">
                     <p className="sub_total">Sub Total: {subTotal}</p>

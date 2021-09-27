@@ -5,7 +5,7 @@ import './style_Sheets/Navbar.css'
 import Cart from './Cart';
 import { useRef} from 'react';
 
-const Navbar = ({productList, editProductList, searchTerm, setSearchTerm}) => {
+const Navbar = ({productList, searchTerm, setSearchTerm}) => {
     const cartRef = useRef();
     const handleClick = () => {
         cartRef.current.classList.toggle('active');
@@ -45,8 +45,7 @@ const Navbar = ({productList, editProductList, searchTerm, setSearchTerm}) => {
             </nav>
             <div className="cart_items" ref={cartRef} onMouseLeave={handleMouseLeave}>
                 {productList && 
-                    <Cart productList={productList.filter(product => product.numberOfItems)} 
-                        editProductList={editProductList}/>}
+                    <Cart productList={productList.filter(product => product.numberOfItems)} />}
             </div>
         </>
     );
