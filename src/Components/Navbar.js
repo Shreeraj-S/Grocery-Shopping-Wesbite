@@ -20,30 +20,28 @@ const Navbar = ({productList, searchTerm, setSearchTerm}) => {
     };
 
     return(
-        <>
-            <nav>
-                <Link className="company-logo" to='/'></Link>
-                <form className="search" onSubmit={event => event.preventDefault()}>
-                    <input type="text" value={searchTerm} onClick={() => setSearchTerm('')}
-                        onChange={event => setSearchTerm(event.target.value)} placeholder='Search for products..'/>
-                    <div>
-                    <button type="submit"><Search /></button>
-                    </div>
-                </form>
-                <div className="cart_navbar" onClick={handleClick}>
-                    <CartImage className="cart_image" />
-                    <div className='text'>
-                        <span>My Basket <br /></span>
-                        {cartItems && cartItems}
-                        <span> items</span>
-                    </div>
+        <nav>
+            <Link className="company-logo" to='/'></Link>
+            <form className="search" onSubmit={event => event.preventDefault()}>
+                <input type="text" value={searchTerm} onClick={() => setSearchTerm('')}
+                    onChange={event => setSearchTerm(event.target.value)} placeholder='Search for products..'/>
+                <div>
+                <button type="submit"><Search /></button>
                 </div>
-            </nav>
+            </form>
+            <div className="cart_navbar" onClick={handleClick}>
+                <CartImage className="cart_image" />
+                <div className='text'>
+                    <span>My Basket <br /></span>
+                    {cartItems && cartItems}
+                    <span> items</span>
+                </div>
+            </div>
             {cartItems ? <div className="cart_items" ref={cartRef} onMouseLeave={handleMouseLeave}>
                 {productList &&
                     <Cart productList={productList.filter(product => product.numberOfItems)} />}
             </div> : null}
-        </>
+        </nav>
     );
 
 };

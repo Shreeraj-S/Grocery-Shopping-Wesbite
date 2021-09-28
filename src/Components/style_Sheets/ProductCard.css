@@ -143,3 +143,60 @@
     border: 1.5px solid #84c225;
 }
 
+@media screen and (max-width: 480px){
+    .product .name{
+        font-size: 25px;
+        padding: 5px;
+    }
+    .product .availablility svg{
+        width: 25px;
+        height: 20px;
+    }
+    .product .availablility{
+        padding: 10px;
+    }
+    .product .bottom .price {
+        padding: 5px;
+        font-size: 20px;
+    }
+    .product .bottom .price span {
+        font-size: 22px;
+    }
+    .product .bottom .delivery .text {
+        padding: 4px;
+        font-size: 16px;
+    }
+    .product .bottom .delivery .bike_image {
+        width: 40px;
+        height: 45px;
+        background-size: 38px 40px;
+        margin-top: -10px;
+    }
+    .product .bottom .add-to-cart-normal {
+        margin: 15px;
+    }
+    .product .bottom .add-to-cart-normal .qty {
+        font-size: 23px;
+    }
+    .product .bottom .add-to-cart-normal input {
+        font-size: 24px;
+    }
+    .product .bottom .add-to-cart-normal button {
+        padding: 5px 15px;
+        font-size: 20px;
+    }
+    .product .bottom .add-to-cart-normal button {
+        margin-left: 10px;
+    }
+    .product .bottom .add-to-cart-clicked {
+        margin-top: 8px;
+    }
+    .product .bottom .add-to-cart-clicked button {
+        width: 28px;
+        font-size: 24px;
+    }
+    .product .bottom .add-to-cart-clicked input {
+        font-size: 22.5px;
+        padding: 2px 0px;
+    }
+}

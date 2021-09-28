@@ -1,10 +1,14 @@
 nav{
-    margin: 15px 0;
+    width: 100%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-around;
-    position: relative;
+    position: fixed;
+    top: 0;
+    background-color: #ffffff;
 }
 nav .company-logo{
+    margin: 5px 0px;
     background-image: url(../images/bb_logo.png);
     background-repeat: no-repeat;
     width: 200px;
@@ -16,7 +20,7 @@ nav .search{
 }
 nav .search input{
     padding-left: 10px;
-    padding-right: 220px;
+    padding-right: 420px;
     height: 30px;
     border: 1px solid #888;
     color: #222;
@@ -25,7 +29,6 @@ nav .search input{
 nav .search input:focus{
     outline: none;
     border: 1px solid #84c225;
-    
 }
 nav .search button{
     background-color: #84c225;
@@ -34,12 +37,14 @@ nav .search button{
     width: 35px;
 }
 nav .cart_navbar{
+    margin: 5px 0px;
     background-color: #f2f2f2;
-    border-color: #f2f2f2;
+    border: 1px solid #e6e5e5;
     padding: 12px;
     display: flex;
     justify-content: space-around;
-    margin-top: 10px;
+    padding-top: 2%;
+    border-radius: 8px;
 }
 nav .cart_navbar .cart_image{
     padding: 5px;
@@ -56,9 +61,64 @@ nav .cart_navbar .text{
     position: absolute;
     background-color: #e0e0e0;
     border: 1px solid #b9b9b9;
-    top: 14.5%;
-    right: 3.8%;
+    top: 94%;
+    right: 4.5%;
 }
 .cart_items.active{
     display: block;
+    
+}
+
+@media screen and (max-width: 768px){
+    nav .search input{
+        padding-right: 130px;
+    }
+    nav .cart_navbar{
+        padding: 8px;
+        padding-top: 3.5%;
+    }
+    nav .cart_navbar .text{
+        line-height: 15px;
+        padding: 2px;
+        font-weight: bold;
+        font-size: 11px;
+    }
+    .cart_items{
+        right: 2.5%;
+    }   
+}
+@media screen and (max-width: 480px){
+    nav .company-logo{
+        background-image: url(../images/bb-icon.png);
+        background-repeat: no-repeat;
+        width: 45px;
+        height: 45px;
+    }
+    nav .search{
+        margin-top: 7px;
+    }
+    nav .search input{
+        padding-left: 5px;
+        padding-right: 15px;
+        height: 37px;
+    }
+    nav .search button {
+        height: 40px;
+    }
+    nav .cart_navbar{
+        padding: 2px;
+    }
+    nav .cart_navbar .cart_image{
+        padding: 8px 3px;
+        width: 26px;
+        height: 24px;
+    }
+    nav .cart_navbar .text{
+        line-height: 15px;
+        padding: 2px;
+        font-size: 10px;
+    }
+    .cart_items{
+        right: 1.5%;
+    }
 }

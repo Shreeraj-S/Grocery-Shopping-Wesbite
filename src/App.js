@@ -24,9 +24,7 @@ function App() {
             <Route exact path="/">
               <Home productList={productList} isPending={isPending} error={error}/>
             </Route>
-          </Switch>
-          <Switch>
-            <Route path="*">
+            <Route path="/*">
               <NotFound />
             </Route>
           </Switch>

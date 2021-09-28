@@ -1,6 +1,6 @@
 .home{
-    max-width: 1000px;
-    margin: 30px auto;
+    max-width: 1100px;
+    margin: 100px auto;
 }
 .home .pending{
     background-color: #f1f0f0;
@@ -34,4 +34,28 @@
 }
 .home .products .product:hover{
     border: 2px solid rgb(207, 207, 207);
+}
+
+@media screen and (max-width: 768px){
+    .home{
+        max-width: 670px;
+    }
+    .home .products{
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 300px;
+        gap: 15px;
+    }
+}
+@media screen and (max-width: 480px){
+    .home{
+        max-width: 330px;
+    }
+    .home .products{
+        grid-template-columns: 1fr;
+        grid-auto-rows: 470px;
+        gap: 20px;
+    }
+    .home .products .product{
+        border: 2px solid rgb(207, 207, 207);
+    }
 }

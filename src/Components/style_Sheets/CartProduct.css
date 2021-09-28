@@ -82,3 +82,9 @@
 .cart_product .cancle:hover{
     color: #84c225;
 }
+
+@media screen and (max-width: 480px){
+    .cart_product .add-to-cart-clicked input {
+        width: 23%
+    }
+}
