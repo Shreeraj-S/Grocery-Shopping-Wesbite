@@ -6,7 +6,9 @@ nav{
     position: fixed;
     top: 0;
     background-color: #ffffff;
+    box-shadow: 0 2px 3px 0 #0000001a;
 }
+
 nav .company-logo{
     margin: 5px 0px;
     background-image: url(../images/bb_logo.png);
