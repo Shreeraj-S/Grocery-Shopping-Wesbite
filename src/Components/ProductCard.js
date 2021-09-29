@@ -3,6 +3,7 @@ import { UpdateNumberofItemsContext } from '../App';
 import './style_Sheets/ProductCard.css'
 import { ReactComponent as Available } from './images/available.svg';
 import { ReactComponent as NotAvailable } from './images/not_available.svg';
+import fallback_image from './images/fallback_product_image.png';
 
 const ProductCard = ({product}) => {
     const addtoCartClicked = useRef();
@@ -23,7 +24,8 @@ const ProductCard = ({product}) => {
 
     return(
             <div className="product">
-                <img className="product_image" src={`/data/product_images/${product.image}`} alt="product " />
+                <img className="product_image" src={product.image} alt="product "
+                    onError={event => event.target.setAttribute('src', fallback_image)} />
                 <span className="availablility">{product.available ? 
                     <span className='available'><Available /></span> : 
                     <span className='not_available'><NotAvailable /></span> }</span>

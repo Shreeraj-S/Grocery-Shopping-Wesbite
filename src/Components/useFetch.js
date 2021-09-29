@@ -1,5 +1,6 @@
 import { useEffect, useReducer} from "react";
-const uri = '../data/Products.json'
+import { getDocs} from "firebase/firestore";
+import { productCollection} from "./Firebase";
 
 const initialState = {isPending: true, data: null, error: null};
 
@@ -24,8 +25,8 @@ const useFetch = () => {
 
     useEffect(() => {
         const getData = async () =>{
-            const response = await fetch(uri);
-            const data = await response.json();
+            const response = await getDocs(productCollection)
+            const data = response.docs.map(product => product.data());
             return data;
         };
         

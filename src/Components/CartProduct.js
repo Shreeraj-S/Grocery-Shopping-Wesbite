@@ -1,6 +1,7 @@
 import { useContext} from 'react';
 import { UpdateNumberofItemsContext } from '../App';
 import './style_Sheets/CartProduct.css'
+import fallback_image from './images/fallback_product_image.png';
 
 const CartProduct = ({product}) => {
     const updateNumberofItems = useContext(UpdateNumberofItemsContext);
@@ -15,7 +16,8 @@ const CartProduct = ({product}) => {
 
     return(
         <div className="cart_product">
-            <img className="product_image" src={`/data/product_images/${product.image}`} alt="product " />
+            <img className="product_image" src={product.image} alt="product " 
+                onError={event => event.target.setAttribute('src', fallback_image)}/>
                 <div className="produc_desc">
                     <p className="vendor">{product.vendor}</p>
                     <p className="name">{product.name}</p>
